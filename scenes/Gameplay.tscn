@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://dj0ndeo2o5r7f"]
+
+[ext_resource type="Script" path="res://scenes/Gameplay.cs" id="1_h0b1w"]
+[ext_resource type="PackedScene" uid="uid://l77dmmksqdg3" path="res://scenes/Player.tscn" id="1_krs0e"]
+[ext_resource type="PackedScene" uid="uid://dpf1ol8hm07gt" path="res://scenes/Object.tscn" id="3_thqij"]
+
+[sub_resource type="Gradient" id="Gradient_14pyp"]
+offsets = PackedFloat32Array(0.180602, 1)
+colors = PackedColorArray(0.176471, 0.360784, 1, 1, 0.196078, 0.384314, 0.376471, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_415ae"]
+gradient = SubResource("Gradient_14pyp")
+width = 256
+height = 256
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_trdjc"]
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0.565217, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0.701961, 0.737255, 0.694118, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sfehc"]
+gradient = SubResource("Gradient_trdjc")
+width = 256
+height = 256
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nknud"]
+radius = 500.0
+
+[node name="Gameplay" type="Node2D"]
+script = ExtResource("1_h0b1w")
+
+[node name="Water" type="Sprite2D" parent="."]
+scale = Vector2(10.5, 5.25)
+texture = SubResource("GradientTexture2D_415ae")
+
+[node name="Player" parent="." instance=ExtResource("1_krs0e")]
+
+[node name="Object" parent="." instance=ExtResource("3_thqij")]
+position = Vector2(518, -175)
+
+[node name="Fog" type="Sprite2D" parent="."]
+z_index = 2
+scale = Vector2(10.5, 5.25)
+texture = SubResource("GradientTexture2D_sfehc")
+
+[node name="ActiveArea" type="Area2D" parent="."]
+scale = Vector2(5, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActiveArea"]
+scale = Vector2(1, 0.5)
+shape = SubResource("CircleShape2D_nknud")
+
+[node name="ObjectSpawn" type="Marker2D" parent="."]
+position = Vector2(2256, -1085)
+
+[node name="Object2" parent="." instance=ExtResource("3_thqij")]
+position = Vector2(887, -353)

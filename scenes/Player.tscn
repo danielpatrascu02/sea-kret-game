@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://l77dmmksqdg3"]
+
+[ext_resource type="Texture2D" uid="uid://dhc2ynle0y140" path="res://icon.svg" id="1_4vgxr"]
+[ext_resource type="Script" path="res://scenes/Player.cs" id="1_eletk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sqe0q"]
+radius = 64.0
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_eletk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sqe0q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_4vgxr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.2, 0.2)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0

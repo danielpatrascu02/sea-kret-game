@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://wy8h8xwymct4"]
+
+[ext_resource type="PackedScene" uid="uid://dtiyub5joy0c8" path="res://scenes/MainMenu.tscn" id="1_w0our"]
+[ext_resource type="PackedScene" uid="uid://dj0ndeo2o5r7f" path="res://scenes/Gameplay.tscn" id="2_21n2a"]
+[ext_resource type="PackedScene" uid="uid://xhwydua27n8y" path="res://scenes/UserInterface.tscn" id="2_q8enu"]
+
+[node name="Game" type="Node2D"]
+
+[node name="MainMenu" parent="." instance=ExtResource("1_w0our")]
+
+[node name="Gameplay" parent="." instance=ExtResource("2_21n2a")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UserInterface" parent="CanvasLayer" instance=ExtResource("2_q8enu")]
